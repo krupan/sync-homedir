@@ -1,0 +1,8 @@
+# put the service file in ~/.config/systemd/user/sync-homedir.service
+[Unit]
+Description=sync-homedir
+
+[Service]
+Type=oneshot
+ExecStart=%h/bin/sync-homedir %h backup-server-hostname:%h
+WorkingDirectory=%h
