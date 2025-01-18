@@ -1,5 +1,4 @@
 #! /bin/sh
-#! /bin/sh
 if [ "$1" = "" ]; then
     echo "please tell me where to sync from (dir or host:dir)"
     exit 1
@@ -9,11 +8,8 @@ if [ "$2" = "" ]; then
     exit 1
 fi
 
-# we'll see how crazy many backups we get with --suffix
 rsync -avP \
       --delete \
-      --backup-dir=/home/bmurdock/.local/sync-from-"$(uname -n)"-backup \
-      --suffix=".$(date --rfc-3339=s)" \
       --exclude=.ICEauthority \
       --exclude=.Xauthority \
       --exclude=.altera.quartus \
@@ -40,6 +36,7 @@ rsync -avP \
       --exclude=.pki \
       --exclude=.python_history \
       --exclude=.ssh-agent-current \
+      --exclude=.ssh/controlmasters \
       --exclude=.ssh/ssh_auth_sock_* \
       --exclude=.stversions \
       --exclude=.thunderbird \
