@@ -8,7 +8,8 @@ if [ "$2" = "" ]; then
     exit 1
 fi
 
-rsync -avP \
+# NOTE: the --exclude=bld* is specific for me, not Linux in general
+rsync -av \
       --delete \
       --exclude=.ICEauthority \
       --exclude=.Xauthority \
@@ -48,4 +49,6 @@ rsync -avP \
       --exclude=.xsession* \
       --exclude=Downloads \
       --exclude=cache \
+      --exclude=bld* \
+      --exclude=tmp \
       "$1" "$2"
